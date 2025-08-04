@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可可困困呀的个人主页</title>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes sakura-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .sakura {
+            position: fixed;
+            top: 0;
+            z-index: 0;
+            pointer-events: none;
+            animation: sakura-fall linear infinite;
+        }
+        .heart-beat {
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+        .art-clock {
+            font-family: 'Caveat', cursive;
+            position: relative;
+        }
+        .art-clock::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffccd5 0%, #ffb6c1 100%);
+            z-index: -1;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+        }
+        .art-clock::after {
+            content: "🌸";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body class="bg-pink-50 font-sans relative overflow-x-hidden">
+    <!-- 樱花飘落效果 -->
+    <div id="sakura-container"></div>
+
+    <!-- 左上角B站链接 -->
+    <a href="https://space.bilibili.com/3546828972755763" class="fixed top-4 left-4 bg-white rounded-full p-2 shadow-lg z-50 hover:shadow-xl transition-all duration-300">
+        <i class="fab fa-bilibili text-xl text-pink-500"></i>
+    </a>
+
+    <!-- 右上角艺术时钟 -->
+    <div id="clock" class="art-clock fixed top-4 right-4 bg-white w-16 h-16 rounded-full flex items-center justify-center text-pink-600 text-xl font-bold z-50"></div>
+
+    <main class="container mx-auto px-4 py-16 relative z-10">
+        <!-- 头像区域 -->
+        <section class="flex flex-col items-center mb-10">
+            <div class="relative group">
+                <img src="https://i0.hdslb.com/bfs/face/3e13671926a9a9aa0a58acd05b23929798a2b740.jpg@128w_128h_1c_1s.webp" 
+                     alt="可可困困呀" 
+                     class="w-36 h-36 rounded-full border-4 border-pink-300 shadow-lg group-hover:border-pink-400 transition-all duration-300">
+                <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md">
+                    LIVE
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-pink-600 mt-4 flex items-center">
+                可可困困呀
+                <span class="heart-beat text-pink-500 ml-2">❤️</span>
+            </h1>
+            <p class="text-pink-400 mt-2">欢迎来到我的小天地</p>
+        </section>
+
+        <!-- 个人介绍区域 (居中且缩小) -->
+        <section class="bg-white rounded-3xl shadow-md p-4 mb-10 max-w-md mx-auto">
+            <h2 class="text-xl font-bold text-pink-600 mb-3 border-b border-pink-100 pb-2 text-center">个人介绍</h2>
+            <div class="space-y-3 text-center">
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    ՞˶･֊･˶՞ಣ 哈喽~ 我是可可困困呀<br>
+                    (๑•̀ㅂ•́)و✧ 一个喜欢分享生活的普通女孩<br>
+                    🌸 每天晚上8点准时开播，等你来聊天<br>
+                    💖 喜欢唱歌、追剧和分享情感小故事<br>
+                    ✨ 希望我的声音能给你带来温暖和治愈
+                </p>
+                <p class="text-pink-500 italic text-sm">"短暂的陪伴也是我珍贵的礼物"</p>
+                
+                <div class="flex flex-wrap gap-2 justify-center mt-3">
+                    <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs">可爱</span>
+                    <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs">直播</span>
+                    <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs">治愈</span>
+                    <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs">闲聊</span>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 mt-3">
+                    <div class="bg-pink-50 rounded-2xl p-3">
+                        <p class="text-xs text-pink-400">UID</p>
+                        <p class="text-pink-600 font-medium text-sm">3546828972755763</p>
+                    </div>
+                    <div class="bg-pink-50 rounded-2xl p-3">
+                        <p class="text-xs text-pink-400">生日</p>
+                        <p class="text-pink-600 font-medium text-sm">01-01</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 直播间按钮 -->
+        <div class="text-center mb-10">
+            <a href="https://live.bilibili.com/1937578288" 
+               class="inline-block bg-gradient-to-r from-pink-500 to-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                <i class="fas fa-play-circle mr-2"></i> 进入直播间
+            </a>
+        </div>
+
+        <!-- 视频卡片列表 (圆角增大+比例调整) -->
+        <section class="mb-10 max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold text-pink-600 mb-4 text-center">我的视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- 视频卡片1 -->
+                <a href="https://www.bilibili.com/video/BV1Tc82zPE7W/?share_source=copy_web&vd_source=5e0e5a4b798482f2fd36015650d66949" class="block">
+                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-48 flex flex-col">
+                        <div class="bg-pink-100 h-2/3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-pink-400 opacity-30"></i>
+                            <!-- 需要修改的视频缩略图URL -->
+                        </div>
+                        <div class="p-3 flex-grow flex items-center justify-center">
+                            <h3 class="font-medium text-gray-800 text-center text-sm">这段感情我一个人苦苦坚持</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- 视频卡片2 -->
+                <a href="https://www.bilibili.com/video/BV1PM82z8E5j/?share_source=copy_web&vd_source=5e0e5a4b798482f2fd36015650d66949" class="block">
+                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-48 flex flex-col">
+                        <div class="bg-pink-100 h-2/3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-pink-400 opacity-30"></i>
+                            <!-- 需要修改的视频缩略图URL -->
+                        </div>
+                        <div class="p-3 flex-grow flex items-center justify-center">
+                            <h3 class="font-medium text-gray-800 text-center text-sm">你不准和她说话</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- 视频卡片3 -->
+                <a href="https://www.bilibili.com/video/BV1ieuez8E79/?share_source=copy_web&vd_source=5e0e5a4b798482f2fd36015650d66949" class="block">
+                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-48 flex flex-col">
+                        <div class="bg-pink-100 h-2/3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-pink-400 opacity-30"></i>
+                            <!-- 需要修改的视频缩略图URL -->
+                        </div>
+                        <div class="p-3 flex-grow flex items-center justify-center">
+                            <h3 class="font-medium text-gray-800 text-center text-sm">我和我的宝宝</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- 视频卡片4 -->
+                <a href="https://www.bilibili.com/video/BV1RXhcz9Ebh/?share_source=copy_web" class="block">
+                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-48 flex flex-col">
+                        <div class="bg-pink-100 h-2/3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-pink-400 opacity-30"></i>
+                            <!-- 需要修改的视频缩略图URL -->
+                        </div>
+                        <div class="p-3 flex-grow flex items-center justify-center">
+                            <h3 class="font-medium text-gray-800 text-center text-sm">今天起得早，鼓励自己</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- 视频卡片5 -->
+                <a href="https://www.bilibili.com/video/BV1RXhcz9Ebh/?share_source=copy_web" class="block">
+                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-48 flex flex-col">
+                        <div class="bg-pink-100 h-2/3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-pink-400 opacity-30"></i>
+                            <!-- 需要修改的视频缩略图URL -->
+                        </div>
+                        <div class="p-3 flex-grow flex items-center justify-center">
+                            <h3 class="font-medium text-gray-800 text-center text-sm">今天起得早，鼓励自己</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- 视频卡片6 -->
+                <a href="https://www.bilibili.com/video/BV14c82zPEna/?share_source=copy_web&vd_source=5e0e5a4b798482f2fd36015650d66949" class="block">
+                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-48 flex flex-col">
+                        <div class="bg-pink-100 h-2/3 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-pink-400 opacity-30"></i>
+                            <!-- 需要修改的视频缩略图URL -->
+                        </div>
+                        <div class="p-3 flex-grow flex items-center justify-center">
+                            <h3 class="font-medium text-gray-800 text-center text-sm">几年前的自己</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white bg-opacity-80 backdrop-blur-md py-4 text-center text-gray-500 text-sm rounded-t-3xl mt-8">
+        <p>created with <span class="text-pink-500">❤️</span> by <a href="https://space.coze.cn" class="text-pink-500 hover:underline">coze space</a></p>
+        <p class="mt-1">页面内容均由 AI 生成，仅供参考 (◕‿◕✿)</p>
+    </footer>
+
+    <script>
+        // 时钟功能 (艺术字体版)
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 樱花飘落效果
+        function createSakura() {
+            const sakuraContainer = document.getElementById('sakura-container');
+            const sakura = document.createElement('div');
+            
+            // 樱花样式
+            const size = Math.random() * 10 + 15; // 15-25px
+            sakura.style.width = `${size}px`;
+            sakura.style.height = `${size}px`;
+            sakura.style.borderRadius = '50% 50% 30% 30%';
+            sakura.style.background = `rgba(255, ${180 + Math.random() * 50}, ${200 + Math.random() * 30}, 0.7)`;
+            sakura.style.left = `${Math.random() * 100}vw`;
+            sakura.style.animationDuration = `${Math.random() * 8 + 12}s`;
+            sakura.style.animationDelay = `${Math.random() * 5}s`;
+            sakura.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            sakura.classList.add('sakura');
+            sakuraContainer.appendChild(sakura);
+            
+            // 动画结束后移除
+            setTimeout(() => {
+                sakura.remove();
+            }, 20000);
+        }
+        
+        // 创建樱花
+        setInterval(createSakura, 300);
+        for (let i = 0; i < 30; i++) {
+            createSakura();
+        }
+    </script>
+</body>
+</html>
